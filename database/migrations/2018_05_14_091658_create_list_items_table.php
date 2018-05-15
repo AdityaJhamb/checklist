@@ -17,6 +17,7 @@ class CreateListItemsTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('description');
+            $table->boolean('completed')->default(0);
             $table->timestamps();
         });
     }

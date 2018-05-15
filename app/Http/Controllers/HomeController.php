@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $list_items = ListItem::where('user_id', Auth::user()->secret_id)->get();
-        return view('home', ['list_items' => $list_items]);
+        $list_items = ListItem::where('user_id', Auth::user()->secret_id);
+        return view('home', ['list_items' => $list_items->where('completed', 0)->get(), 'count' => $list_items->where('completed', 1)->count()]);
     }
 }
